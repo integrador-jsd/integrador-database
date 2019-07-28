@@ -85,7 +85,7 @@ CREATE TABLE `Block`
 	`sectionalID` INT NOT NULL,
 	CONSTRAINT `PK_Bloque` PRIMARY KEY (`number` ASC, `sectionalID` ASC)
 )
-COMMENT = 'Espacio físico conformado por aulas.'
+COMMENT = 'Espacio f�sico conformado por aulas.'
 
 ;
 
@@ -96,7 +96,7 @@ CREATE TABLE `Classroom_type`
 	`description` VARCHAR(50) NULL,
 	CONSTRAINT `PK_tipo_aulas` PRIMARY KEY (`id` ASC)
 )
-COMMENT = 'Tipo de aulas donde se desarrollan actividades académicas  	- Aula 	- Laboratorio 	- Auditorio 	- Taller'
+COMMENT = 'Tipo de aulas donde se desarrollan actividades acad�micas  	- Aula 	- Laboratorio 	- Auditorio 	- Taller'
 
 ;
 
@@ -115,7 +115,7 @@ CREATE TABLE `Event`
 	`userID` VARCHAR(50) NULL,
 	CONSTRAINT `PK_Table1` PRIMARY KEY (`id` ASC)
 )
-COMMENT = 'Espacio de tiempo dedicado al desarrollo de actividades académicas de un grupo, que se realizan en un aula.'
+COMMENT = 'Espacio de tiempo dedicado al desarrollo de actividades acad�micas de un grupo, que se realizan en un aula.'
 
 ;
 
@@ -157,7 +157,7 @@ CREATE TABLE `Item`
 	`name` VARCHAR(50) NULL,
 	CONSTRAINT `PK_item` PRIMARY KEY (`id` ASC)
 )
-COMMENT = 'Elemento físico supervisado por una unidad logística que se puede disponer en las aulas o ser prestado particularmente.'
+COMMENT = 'Elemento f�sico supervisado por una unidad log�stica que se puede disponer en las aulas o ser prestado particularmente.'
 
 ;
 
@@ -239,7 +239,7 @@ CREATE TABLE `Room`
 	`type` INT NULL,
 	CONSTRAINT `PK_Aula` PRIMARY KEY (`id` ASC, `sectionalID` ASC, `blockID` ASC)
 )
-COMMENT = 'Espacio en el que se desarrolla un evento, como una clase magistral, reuniones de un semillero de investigación, entre otras.'
+COMMENT = 'Espacio en el que se desarrolla un evento, como una clase magistral, reuniones de un semillero de investigaci�n, entre otras.'
 
 ;
 
@@ -249,7 +249,8 @@ CREATE TABLE `Rooms_per_Logistic_Unit`
 	`logisticUnit` VARCHAR(50) NOT NULL,
 	`sectionalID` INT NOT NULL,
 	`blockID` INT NOT NULL,
-	`roomID` INT NOT NULL
+	`roomID` INT NOT NULL,
+	CONSTRAINT `PK_Rooms_per_Logistic_Unit` PRIMARY KEY (`id` ASC)
 )
 
 ;
@@ -306,7 +307,7 @@ CREATE TABLE `Turn`
 	`auxiliarID` VARCHAR(50) NULL,
 	CONSTRAINT `PK_Table1` PRIMARY KEY (`id` ASC)
 )
-COMMENT = 'Intervalo de tiempo en el que un auxiliar realiza las tareas que le corresponden, como el monitoreo y apoyo logístico a la sector que le fue asignada, responder a las solicitudes que se generen durante su turno'
+COMMENT = 'Intervalo de tiempo en el que un auxiliar realiza las tareas que le corresponden, como el monitoreo y apoyo log�stico a la sector que le fue asignada, responder a las solicitudes que se generen durante su turno'
 
 ;
 
@@ -326,11 +327,11 @@ CREATE TABLE `User`
 (
 	`username` VARCHAR(50) NOT NULL COMMENT 'Nombre de usuario del portal institucional.',
 	`email` VARCHAR(50) NULL COMMENT 'Correo institucional.',
-	`logisticUnit` VARCHAR(50) NULL COMMENT 'Unidad logística a la que está asociado el usuario. NULL indica que no está asociado a ninguna.',
+	`logisticUnit` VARCHAR(50) NULL COMMENT 'Unidad log�stica a la que est� asociado el usuario. NULL indica que no est� asociado a ninguna.',
 	`userType` INT NULL,
 	CONSTRAINT `PK_usuario` PRIMARY KEY (`username` ASC)
 )
-COMMENT = 'Usuario del sistema de información que puede ser de varios tipos  	- Auxiliar 	- Unidad logística 	- Usuario normal'
+COMMENT = 'Usuario del sistema de informaci�n que puede ser de varios tipos  	- Auxiliar 	- Unidad log�stica 	- Usuario normal'
 
 ;
 
@@ -353,7 +354,7 @@ CREATE TABLE `User_type`
 	`type` VARCHAR(50) NOT NULL,
 	CONSTRAINT `PK_tipo_usuario` PRIMARY KEY (`id` ASC)
 )
-COMMENT = 'Almacena los distintos  tipos de usuario soportados por el sistema:  	- Auxiliar: Persona encargada de supervisar y brindar soporte logístico a las aulas de una sección. Por soporte logístico se entiende realizar préstamos de aulas, abrirlas, cerrarlas o atender las solicitudes que se puedan generar. 	- Unidad logística: Entidad encargada de la gestión de los auxiliares y sus tareas, horarios y turnos, de las aulas y de los implementos que tiene bajo su potestad. 	- Usuario: Persona que usa la aplicación con el fin de realizar algún préstamo o solicitar ayuda. ( Persona que requiere un servicio de préstamo o ayuda brindado por la unidad logística.)'
+COMMENT = 'Almacena los distintos  tipos de usuario soportados por el sistema:  	- Auxiliar: Persona encargada de supervisar y brindar soporte log�stico a las aulas de una secci�n. Por soporte log�stico se entiende realizar pr�stamos de aulas, abrirlas, cerrarlas o atender las solicitudes que se puedan generar. 	- Unidad log�stica: Entidad encargada de la gesti�n de los auxiliares y sus tareas, horarios y turnos, de las aulas y de los implementos que tiene bajo su potestad. 	- Usuario: Persona que usa la aplicaci�n con el fin de realizar alg�n pr�stamo o solicitar ayuda. ( Persona que requiere un servicio de pr�stamo o ayuda brindado por la unidad log�stica.)'
 
 ;
 
